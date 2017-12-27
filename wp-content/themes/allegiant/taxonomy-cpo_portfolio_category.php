@@ -1,31 +1,40 @@
 <?php get_header(); ?>
 
 <?php get_template_part('template-parts/element', 'page-header'); ?>
-	
+
 <div id="main" class="main">
 	<div class="container">
 		<section id="content" class="content">
+			
 			<?php do_action('cpotheme_before_content'); ?>
 			
-			<?php $description = term_description(); ?>
-			<?php if($description != ''): ?>
-			<div class="page-content">
-				<?php echo $description; ?>
-			</div>
-			<?php endif; ?>
-			
 			<?php cpotheme_secondary_menu('cpo_portfolio_category', 'menu-portfolio'); ?>
-				
-			<?php if(have_posts()): $feature_count = 0; ?>
-			<div id="portfolio" class="portfolio">
-				<?php cpotheme_grid(null, 'element', 'portfolio', 3, array('class' => 'column-fit')); ?>
-			</div>
+
+			<?php if(get_query_var('paged')) $current_page = get_query_var('paged'); else $current_page = 1; ?>	
+			<?php $query = new WP_Query(array('post_type'=>'cpo_portfolio',
+			'posts_per_page'=>16,
+			'order'=>'ASC',
+			'tax_query' => array(
+		array(
+			'taxonomy' => 'cpo_portfolio_category',
+			'field'    => 'slug',
+			'terms'    => 'ongoing'
+		),
+	)
+			)); ?>
+			<?php if($query->posts): $feature_count = 0; ?>
+			<section id="portfolio" class="portfolio">
+
+				<?php cpotheme_grid($query->posts, 'element', 'portfolio', 3, array('class' => 'column-fit')); ?>
+			</section>
+			<?php cpotheme_numbered_pagination($query); ?>
+			<?php wp_reset_postdata(); ?>
 			<?php endif; ?>
-			<?php cpotheme_numbered_pagination(); ?>
 			
 			<?php do_action('cpotheme_after_content'); ?>
 		</section>
 		<?php get_sidebar(); ?>
+		<div class="clear"></div>
 	</div>
 </div>
 

@@ -1,5 +1,5 @@
-<div class="portfolio-item dark <?php if(has_excerpt()) echo ' portfolio-item-has-excerpt'; ?>">
-	<a class="portfolio-item-image" href="<?php the_permalink(); ?>">
+<!--<div class="portfolio-item dark <?php if(has_excerpt()) echo ' portfolio-item-has-excerpt'; ?>">
+	<div class="portfolio-item-image" href="<?php the_permalink(); ?>">
 		<div class="portfolio-item-overlay primary-color-bg"></div>
 		<h3 class="portfolio-item-title">
 			<?php the_title(); ?>
@@ -10,6 +10,12 @@
 			<?php //cpotheme_edit(); ?>
 		</div>
 		<?php endif; ?>
+		<?php the_post_thumbnail('portfolio', array('title' => '')); ?>
+	</div>
+</div> 
+-->
+					<div class="image-gallery-item">
+	<a href="javascript:void(0)" style="cursor:pointer;" rel="gallery[portfolio]">
 		<?php the_post_thumbnail('portfolio', array('title' => '')); ?>
 	</a>
 </div>

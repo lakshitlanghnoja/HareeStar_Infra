@@ -22,6 +22,7 @@
 			<?php $query = new WP_Query('post_type=cpo_portfolio&paged='.$current_page.'&posts_per_page=16&order=ASC&orderby=menu_order'); ?>
 			<?php if($query->posts): $feature_count = 0; ?>
 			<section id="portfolio" class="portfolio">
+
 				<?php cpotheme_grid($query->posts, 'element', 'portfolio', 3, array('class' => 'column-fit')); ?>
 			</section>
 			<?php cpotheme_numbered_pagination($query); ?>

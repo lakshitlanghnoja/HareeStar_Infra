@@ -1,0 +1,20 @@
+.col-sm-4 {
+    width: 30%;
+    padding: 0px 10px;
+	float:left;
+}
+.col-sm-8 {
+    width: 60%;
+    padding: 0px 10px;
+    float: left;
+}
+@media (max-width:767px) {
+.col-sm-4 {
+    width: 90%;
+    padding: 0px 10px;
+}
+.col-sm-8 {
+    width: 90%;
+    padding: 0px 10px;
+}
+}
