@@ -11,17 +11,20 @@
 			<?php cpotheme_secondary_menu('cpo_portfolio_category', 'menu-portfolio'); ?>
 
 			<?php if(get_query_var('paged')) $current_page = get_query_var('paged'); else $current_page = 1; ?>	
-			<?php $query = new WP_Query(array('post_type'=>'cpo_portfolio',
+			<?php 
+			
+			$query = new WP_Query(array('post_type'=>'cpo_portfolio',
 			'posts_per_page'=>16,
 			'order'=>'ASC',
 			'tax_query' => array(
 		array(
 			'taxonomy' => 'cpo_portfolio_category',
-			'field'    => 'slug',
-			'terms'    => 'ongoing'
+			'field'    => 'id',
+			'terms'    => get_queried_object()->term_id
 		),
 	)
-			)); ?>
+			));
+			?>
 			<?php if($query->posts): $feature_count = 0; ?>
 			<section id="portfolio" class="portfolio">
 

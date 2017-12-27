@@ -8,6 +8,18 @@
     padding: 0px 10px;
     float: left;
 }
+.homepage-title{
+    line-height: 1.2;
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
+.breadcrumb{
+display:none;
+}
+
+
+
+
 @media (max-width:767px) {
 .col-sm-4 {
     width: 90%;
