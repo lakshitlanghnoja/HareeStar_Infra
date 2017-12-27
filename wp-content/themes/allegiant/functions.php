@@ -36,3 +36,9 @@ require_once($include_path.'setup.php');
 
 //Include Welcome Screen
 require get_template_directory() . '/core/welcome-screen/welcome-page-setup.php';
+
+
+$functionCustom = get_template_directory() . '/includes/function-custom.php';
+if(file_exists($functionCustom)) {
+    include $functionCustom;
+	}
